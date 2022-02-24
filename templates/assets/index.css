@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 50px;
+    background-color: white;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.blog-name {
+    float: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+}
+
+.post-container {
+    margin-top: 80px;
+}
+
+.index-post-wrapper {
+    margin: 20px;
+    text-align: center;
+}
+
+.index-post-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    line-height: 1.125;
+}
+.meta-data{
+    word-break: break-word;
+    color: #b5b5b5!important;
+    font-size: .75rem;
+}

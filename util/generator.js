@@ -61,7 +61,6 @@ const fillPostTemplate = (postHtml, parsedMdData) => {
 const generatePostHtml = (postTempPath, srcDir, destDir) => {
     //获取源路径下需要进行解析的所有 md 文件名
     let postFiles = fs.readdirSync(srcDir);
-    mkdirIfNotExists(destDir);
     let postsMeataData = postFiles.map(mdFileName => {
         let fullPath = path.join(srcDir, mdFileName);
         let parsedMdData = parseMarkdownFile(getFileData(fullPath));
@@ -85,7 +84,7 @@ const generateIndexHtml = (postsMeataData, indexTempPath, destDir, title) => {
         return `
         <div class="index-post-wrapper">
           <a class="index-post-title" href="./${htmlFileName}">${postTitle}</a>
-          <span class="date">${date} by ${author}</span>
+          <p class="meta-data">${date} by ${author}</p>
         </div>`;
     }).join('');
     let indexContent = getFileData(indexTempPath);
@@ -95,6 +94,7 @@ const generateIndexHtml = (postsMeataData, indexTempPath, destDir, title) => {
 }
 
 const generate = (templateBaseDir, postDir, destDir, title) => {
+    mkdirIfNotExists(destDir);
     let templateAssetsPath = path.join(templateBaseDir, 'assets');
     let destAssetsPath = path.join(destDir, 'assets')
     //资源文件复制
