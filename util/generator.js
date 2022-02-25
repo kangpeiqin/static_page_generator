@@ -61,7 +61,7 @@ const fillPostTemplate = (postHtml, parsedMdData) => {
 const generatePostHtml = (postTempPath, srcDir, destDir) => {
     //获取源路径下需要进行解析的所有 md 文件名
     let postFiles = fs.readdirSync(srcDir);
-    let postsMeataData = postFiles.map(mdFileName => {
+    let postsMetaData = postFiles.map(mdFileName => {
         let fullPath = path.join(srcDir, mdFileName);
         let parsedMdData = parseMarkdownFile(getFileData(fullPath));
         let resHtml = fillPostTemplate(getFileData(postTempPath), parsedMdData);
@@ -71,7 +71,7 @@ const generatePostHtml = (postTempPath, srcDir, destDir) => {
         parsedMdData.metaData.htmlFileName = htmlFileName;
         return parsedMdData.metaData;
     });
-    return postsMeataData;
+    return postsMetaData;
 }
 
 /**
@@ -102,9 +102,9 @@ const generate = (templateBaseDir, postDir, destDir, title) => {
     let indexTempPath = path.join(templateBaseDir, 'index.html');
     let postTempPath = path.join(templateBaseDir, 'post.html');
     //解析指定路径下的 md 文件，填充 post.html 模板，生成博文
-    let postsMeataData = generatePostHtml(postTempPath, postDir, destDir);
+    let postsMetaData = generatePostHtml(postTempPath, postDir, destDir);
     //根据博文的元信息，生成首页
-    generateIndexHtml(postsMeataData, indexTempPath, destDir, title);
+    generateIndexHtml(postsMetaData, indexTempPath, destDir, title);
     console.log("generate successful!");
 }
 
